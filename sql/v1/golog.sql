@@ -11,7 +11,7 @@
  Target Server Version : 80024
  File Encoding         : 65001
 
- Date: 06/05/2022 22:04:01
+ Date: 06/05/2022 23:16:46
 */
 
 SET NAMES utf8mb4;
@@ -22,15 +22,15 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `blog`;
 CREATE TABLE `blog`  (
-  `BlogID` int(0) NOT NULL AUTO_INCREMENT,
+  `BlogId` int(0) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '关联外键',
-  `Name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章名',
+  `BlogName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章名',
   `Category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分组',
   `CreateTime` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `LatestTime` datetime(0) NULL DEFAULT NULL COMMENT '最后发布时间',
   `CurrEditTxt` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '正在编辑的文本',
   `ViewTxt` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '显示的 输出文章',
-  PRIMARY KEY (`BlogID`) USING BTREE
+  PRIMARY KEY (`BlogId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------

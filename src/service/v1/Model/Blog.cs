@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    /// <summary>
+    /// 文章表
+    /// </summary>
     public class Blog
     {
         /// <summary>
@@ -33,7 +36,13 @@ namespace Model
         /// 最后一次发布时间
         /// </summary>
         public DateTime LatestTime { get; set; }
-
+        /// <summary>
+        /// 最后次编辑的文本
+        /// </summary>
         public string CurrEditTxt { get; set; }
+        /// <summary>
+        ///显示的文本
+        /// </summary>
+        public string ViewTxt { get; set; }
     }
 }
