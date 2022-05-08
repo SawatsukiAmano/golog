@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ModelRes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -13,5 +14,17 @@ namespace API.Controllers
         {
             return "连接成功" + DateTime.Now;
         }
+
+
+        [HttpGet]
+        public result GetAcc(string acc)
+        {
+            result res = new result();
+
+            res.message = "123";
+
+            return res;
+        }
+
     }
 }
