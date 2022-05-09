@@ -20,7 +20,11 @@ namespace DBUtility
         //public string ConnectionString { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+<<<<<<< HEAD
             optionsBuilder.UseMySql("", new MySqlServerVersion(new Version(8, 0, 26)));
+=======
+            optionsBuilder.UseMySql("server=42.193.14.174;user id=root;password=Admin@123;database=golog;Character Set=utf8", new MySqlServerVersion(new Version(8, 0, 26)));
+>>>>>>> d7af8ff9269fc9a14dc2c85817c1d5160e181346
         }
 
         //创建时配置
