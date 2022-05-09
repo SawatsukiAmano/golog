@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DALLabel:IDALLabel
+    public class DALBlogMySql : IDALBlog
     {
     }
 }

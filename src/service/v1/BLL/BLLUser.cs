@@ -23,7 +23,7 @@ namespace BLL
 
         public User Find(Expression<Func<User, bool>> expression)
         {
-            return _iUserDAL.Find(expression);
+            return _dalUser.Find(expression);
         }
 
         public bool Logion(string acc, string pwd)

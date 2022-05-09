@@ -2,6 +2,10 @@ using BLL;
 using IBLL;
 using IDAL;
 using DAL;
+using Microsoft.EntityFrameworkCore;
+using SysModel;
+using Autofac;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,10 +16,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 #region ЗўЮёзЂВс
+builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.AddScoped<IBLLUser, BLLUser>();
-builder.Services.AddScoped<IDALUser, DALUser>();
+builder.Services.AddScoped<IDALUser, DALUserMySql>();
 
-
+var autoBuilder = new ContainerBuilder();
+//autoBuilder.Register<>
 #endregion
 
 var app = builder.Build();

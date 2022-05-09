@@ -11,12 +11,12 @@ using System.Linq.Expressions;
 
 namespace DAL
 {
-    public class DALUser : IDALUser
+    public class DALUserMySql : IDALUser
     {
 
         public User Find(Expression<Func<User, bool>> expression)
         {
-            using (var db = new EFMySQLContent())
+            using (var db = new EFMySqlContent())
             {
                 var user = db.User.Where(expression).FirstOrDefault();
                 return user;

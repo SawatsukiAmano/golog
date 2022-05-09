@@ -1,6 +1,7 @@
-﻿using IDBUnity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Model;
+using SysModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,18 +11,22 @@ using System.Threading.Tasks;
 
 namespace DBUtility
 {
-    public class EFMySQLContent : DbContext
+    public class EFMySqlContent : DbContext
     {
+        //属性注入
+        public ConnectionStrings connectionStrings { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Label> Label { get; set; }
         public DbSet<Blog> Blog { get; set; }
+
+
         //[ConfigurationProperty("connectionString", DefaultValue = "", Options = System.Configuration.ConfigurationPropertyOptions.IsRequired)]
         //public string ConnectionString { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=42.193.14.174;user id=root;password=Admin@123;database=golog;Character Set=utf8", new MySqlServerVersion(new Version(8, 0, 26)));
 
+            optionsBuilder.UseMySql(connectionStrings.DefaultConnection, new MySqlServerVersion(new Version(8, 0, 26)));
         }
 
         //创建时配置
