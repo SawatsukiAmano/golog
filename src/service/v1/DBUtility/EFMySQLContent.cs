@@ -16,10 +16,11 @@ namespace DBUtility
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Label> Label { get; set; }
         public DbSet<Blog> Blog { get; set; }
-
+        //[ConfigurationProperty("connectionString", DefaultValue = "", Options = System.Configuration.ConfigurationPropertyOptions.IsRequired)]
+        //public string ConnectionString { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(ConfigurationManager.AppSettings["ConnectionString"], new MySqlServerVersion(new Version(8, 0, 26)));
+            optionsBuilder.UseMySql("", new MySqlServerVersion(new Version(8, 0, 26)));
         }
 
         //创建时配置

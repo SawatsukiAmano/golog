@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace IBLL
 {
@@ -11,6 +12,6 @@ namespace IBLL
     {
         bool Logion(string acc, string pwd);
 
-        User GetOne(string acc);
+        User Find(Expression<Func<User, bool>> expression);
     }
 }

@@ -7,16 +7,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace DAL
 {
-    public class DALUSER : IDALUSER
+    public class DALUser : IDALUser
     {
-        public User GetOne(string acc)
+
+        public User Find(Expression<Func<User, bool>> expression)
         {
             using (var db = new EFMySQLContent())
             {
-
+                var user = db.User.Where(expression).FirstOrDefault();
+                return user;
             }
         }
 

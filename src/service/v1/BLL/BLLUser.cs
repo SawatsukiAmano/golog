@@ -4,6 +4,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,23 +13,22 @@ namespace BLL
     public class BLLUser : IBLLUser
     {
 
-        private IDALUSER _iUserDAL;
+        private readonly IDALUser _dalUser;
 
-        public BLLUser(IDALUSER userDAL)
+        public BLLUser(IDALUser userDAL)
         {
-            this._iUserDAL = userDAL;
+            this._dalUser = userDAL;
 
         }
 
-        public User GetOne(string acc)
+        public User Find(Expression<Func<User, bool>> expression)
         {
-
+            return _iUserDAL.Find(expression);
         }
 
         public bool Logion(string acc, string pwd)
         {
             bool result = false;
-
 
             return false;
         }

@@ -1,3 +1,7 @@
+using BLL;
+using IBLL;
+using IDAL;
+using DAL;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region ЗўЮёзЂВс
+builder.Services.AddScoped<IBLLUser, BLLUser>();
+builder.Services.AddScoped<IDALUser, DALUser>();
+
+
+#endregion
 
 var app = builder.Build();
 

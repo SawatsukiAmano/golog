@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
+
     public class User
     {
+        [Key]
         public int UserId { get; set; }
         /// <summary>
         /// 用户名
@@ -16,7 +19,7 @@ namespace Model
         /// <summary>
         /// 密码
         /// </summary>
-        public int Password { get; set; }
+        public string Password { get; set; }
         /// <summary>
         /// 昵称
         /// </summary>
