@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using ModelRes;
 using Microsoft.AspNetCore.Mvc;
+using Model;
+using IBLL;
 
 namespace API.Controllers
 {
@@ -8,6 +10,11 @@ namespace API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        private readonly IBLLUser _iBLLUser;
+        public LoginController(IBLLUser bLLUser)
+        {
+            _iBLLUser = bLLUser;
+        }
 
         [HttpGet]
         public string GetTest()
@@ -20,9 +27,8 @@ namespace API.Controllers
         public result GetAcc(string acc)
         {
             result res = new result();
-
-            res.message = "123";
-
+            User user = _iBLLUser.Find(x => x.UserId == 1 && x.UserName == acc);
+            res.information = user;
             return res;
         }
 
