@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 #region ЗўЮёзЂВс
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
-builder.Services.AddScoped<IBLLUser, BLLUser>();
+builder.Services.AddScoped<IBLLUser, BLLUserMySql>();
 builder.Services.AddScoped<IDALUser, DALUserMySql>();
 
 var autoBuilder = new ContainerBuilder();

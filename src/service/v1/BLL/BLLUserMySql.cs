@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BLLUser : IBLLUser
+    public class BLLUserMySql : IBLLUser
     {
 
         private readonly IDALUser _dalUser;
 
-        public BLLUser(IDALUser userDAL)
+        public BLLUserMySql(IDALUser userDAL)
         {
             this._dalUser = userDAL;
 

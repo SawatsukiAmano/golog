@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class BLLBlog : IBLLBlog
+    public class BLLBlogMySql : IBLLBlog
     {
     }
 }
