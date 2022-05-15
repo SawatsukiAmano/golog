@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using IBLL;
 
-namespace API.Controllers
+namespace API.api
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -28,7 +28,7 @@ namespace API.Controllers
         {
             result res = new result();
             User user = _iBLLUser.Find(x => x.UserId == 1 && x.UserName == acc);
-            res.information = user;
+            //res.information = user;
             return res;
         }
 

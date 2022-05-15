@@ -13,8 +13,6 @@ namespace DBUtility
 {
     public class EFMySqlContent : DbContext
     {
-        //属性注入
-        public ConnectionStrings connectionStrings { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Label> Label { get; set; }
@@ -26,7 +24,7 @@ namespace DBUtility
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql(connectionStrings.DefaultConnection, new MySqlServerVersion(new Version(8, 0, 26)));
+            optionsBuilder.UseMySql("", new MySqlServerVersion(new Version(8, 0, 26)));
         }
 
         //创建时配置

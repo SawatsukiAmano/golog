@@ -18,8 +18,17 @@ namespace DAL
         {
             using (var db = new EFMySqlContent())
             {
-                var user = db.User.Where(expression).FirstOrDefault();
+                var user = db.User.FirstOrDefault(expression);
                 return user;
+            }
+        }
+
+        public List<User> WHERE(Expression<Func<User, bool>> expression)
+        {
+            using (var db = new EFMySqlContent())
+            {
+                var user = db.User.Where(expression);
+                return user.ToList();
             }
         }
 
