@@ -11,10 +11,13 @@ namespace DAL
 {
     public class DALBlogMySql : IDALBlog
     {
-        public bool InsterOneBlog(Blog blog)
+        public bool AddOneBlog(Blog blog)
         {
             using (var db = new EFMySqlContent())
             {
+                blog.UserName = "122";
+                blog.CreateTime = DateTime.Now;
+                blog.LatestTime = DateTime.Now;
                 db.Add(blog);
                 return db.SaveChanges() > 0;
             }

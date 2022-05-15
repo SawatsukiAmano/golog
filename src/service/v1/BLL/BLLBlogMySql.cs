@@ -1,4 +1,5 @@
 ﻿using IBLL;
+using IDAL;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,17 @@ namespace BLL
 {
     public class BLLBlogMySql : IBLLBlog
     {
-        public Task<bool> AddOneBlog(Blog blog)
+        private readonly IDALBlog _dALBlog;
+        public BLLBlogMySql(IDALBlog blogDAL)
         {
-            throw new NotImplementedException();
+            this._dALBlog = blogDAL;
+        }
+        public async Task<bool> AddOneBlog(Blog blog)
+        {
+            return await Task.Run(() =>
+            {
+                return _dALBlog.AddOneBlog(blog);
+            });
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Model
         /// <summary>
         /// 第一次发布时间
         /// </summary>
-        public DateTime CreatedTime { get; set; }
+        public DateTime CreateTime { get; set; }
         /// <summary>
         /// 最后一次发布时间
         /// </summary>

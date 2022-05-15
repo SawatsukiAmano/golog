@@ -11,48 +11,53 @@ namespace ModelRes
     {
         public result()
         {
-            result_info = new JObject();
+            _result_info = new JObject();
         }
         public void Instance()
         {
-            code = 500;
-            result_info["sub_code"] = 404;
-            result_info["sub_msg"] = "请求失败";
+            _code = 500;
+            _result_info["sub_code"] = 404;
+            _result_info["sub_msg"] = "请求失败";
         }
 
         public void Success()
         {
-            code = 200;
-            result_info["sub_code"] = 200;
-            result_info["sub_msg"] = "请求成功";
+            _code = 200;
+            _result_info["sub_code"] = 200;
+            _result_info["sub_msg"] = "请求成功";
         }
 
         public void Success(JObject jobj)
         {
-            code = 200;
-            result_info["sub_code"] = 200;
-            result_info["sub_msg"] = "请求成功";
-            data = jobj;
+            _code = 200;
+            _result_info["sub_code"] = 200;
+            _result_info["sub_msg"] = "请求成功";
+            _data = jobj;
         }
 
         public void Fail(int code = 404, string sub_msg = "请求失败")
         {
-            code = 500;
-            result_info["sub_code"] = code;
-            result_info["sub_msg"] = sub_msg;
+            _code = 500;
+            _result_info["sub_code"] = code;
+            _result_info["sub_msg"] = sub_msg;
         }
         public void Fail(int code, string sub_msg, JObject jobj)
         {
-            code = 500;
-            result_info["sub_code"] = code;
-            result_info["sub_msg"] = sub_msg;
-            data = jobj;
+            _code = 500;
+            _result_info["sub_code"] = code;
+            _result_info["sub_msg"] = sub_msg;
+            _data = jobj;
         }
 
-        private int code { get; set; }
+        public int code => _code;
+        public JObject result_info => _result_info;
 
-        private JObject result_info { get; set; }
+        public JObject? data => _data;
 
-        private JObject? data { get; set; }
+        private int _code { get; set; }
+
+        private JObject _result_info { get; set; }
+
+        private JObject? _data { get; set; }
     }
 }

@@ -3,7 +3,6 @@ using IBLL;
 using IDAL;
 using DAL;
 using Microsoft.EntityFrameworkCore;
-using SysModel;
 using Autofac;
 using System.Net;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -20,7 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MyProfile));
 
 #region ЗўЮёзЂВс
-builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
+//builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 builder.Services.AddScoped<IBLLUser, BLLUserMySql>();
 builder.Services.AddScoped<IDALUser, DALUserMySql>();
 builder.Services.AddScoped<IBLLBlog, BLLBlogMySql>();

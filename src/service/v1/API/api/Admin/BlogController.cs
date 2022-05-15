@@ -37,11 +37,10 @@ namespace API.api.Admin
         public async Task<IActionResult> AddOneBlog([FromBody] blog blog)
         {
             _result.Instance();
-            Blog data = new Blog();
+            Blog data = _mapper.Map<Blog>(blog);
             data.BlogName = "测试名称";
-
-
-            bool res = await _bLLBlog.AddOneBlog(data);
+            //bool res = await _bLLBlog.AddOneBlog(data);
+            bool res = true;
             if (res)
                 _result.Success();
             else

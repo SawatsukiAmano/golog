@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Model;
-using SysModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,7 +23,7 @@ namespace DBUtility
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("", new MySqlServerVersion(new Version(8, 0, 26)));
+            optionsBuilder.UseMySql("server=42.193.14.174;user id=root;password=Admin@123;database=golog;Character Set=utf8", new MySqlServerVersion(new Version(8, 0, 26)));
         }
 
         //创建时配置

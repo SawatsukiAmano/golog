@@ -10,6 +10,6 @@ namespace IDAL
     public interface IDALBlog
     {
 
-        bool InsterOneBlog(Blog blog);
+        bool AddOneBlog(Blog blog);
     }
 }
