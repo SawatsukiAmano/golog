@@ -15,7 +15,7 @@ namespace ModelRes
         public string blog_name { get; set; }
      
         public string category { get; set; }
-        public DateTime created_time { get; set; }
+        public DateTime create_time { get; set; }
    
         public DateTime lagtest_time { get; set; }
  

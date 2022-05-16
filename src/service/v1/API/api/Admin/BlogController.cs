@@ -24,7 +24,6 @@ namespace API.api.Admin
         {
             _result = StaticHelper.api_result;
             _bLLBlog = bLLBlog;
-
             _mapper = mapper;
         }
 
@@ -37,10 +36,9 @@ namespace API.api.Admin
         public async Task<IActionResult> AddOneBlog([FromBody] blog blog)
         {
             _result.Instance();
-            Blog data = _mapper.Map<Blog>(blog);
-            data.BlogName = "测试名称";
+            var data = _mapper.Map<Blog>(blog);
             //bool res = await _bLLBlog.AddOneBlog(data);
-            bool res = true;
+            bool res = false;
             if (res)
                 _result.Success();
             else

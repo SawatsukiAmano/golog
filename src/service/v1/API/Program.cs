@@ -16,14 +16,19 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(typeof(MyProfile));
+
 
 #region ·þÎñ×¢²á
-//builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
+//AutoMapper
+builder.Services.AddAutoMapper(typeof(MyProfile));
+builder.Services.AddControllers().AddNewtonsoftJson();
+// IBLL¡ª¡ªBLL IDAL¡ª¡ªDAL Ó³Éä
 builder.Services.AddScoped<IBLLUser, BLLUserMySql>();
 builder.Services.AddScoped<IDALUser, DALUserMySql>();
 builder.Services.AddScoped<IBLLBlog, BLLBlogMySql>();
 builder.Services.AddScoped<IDALBlog, DALBlogMySql>();
+
+//builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 //autofac
 //var autoBuilder = new ContainerBuilder();
 //autoBuilder.Register<>

@@ -15,13 +15,10 @@ namespace DAL
         {
             using (var db = new EFMySqlContent())
             {
-                blog.UserName = "122";
-                blog.CreateTime = DateTime.Now;
-                blog.LatestTime = DateTime.Now;
+                blog.BlogId = 0;
                 db.Add(blog);
                 return db.SaveChanges() > 0;
             }
-
         }
     }
 }
