@@ -35,10 +35,7 @@ builder.Services.AddScoped<IDALBlog, DALBlogMySql>();
 #endregion
 
 
-var configuration = new AutoMapper.MapperConfiguration(cfg =>
-{
-    cfg.CreateMap<blog, Blog>();
-});
+
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
