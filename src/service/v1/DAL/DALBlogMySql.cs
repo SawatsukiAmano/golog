@@ -47,11 +47,17 @@ namespace DAL
             {
                 if (editBlog != null && editBlog.Count() > 0)
                 {
-                    var blogs = db.Blog.Where(b => editBlog.Any(e => e.BlogId == b.BlogId));
+                    int[] ids = editBlog.Select(p => p.BlogId).ToArray();
+                    var blogs = db.Blog.Where(b => ids.Any(e => e == b.BlogId)).ToList();
                     foreach (var item in editBlog)
                     {
                         var old = blogs.FirstOrDefault(o => o.BlogId == item.BlogId);
-                        old = item;
+                        old.BlogName = item.BlogName;
+                        old.Category=item.Category;
+                        old.ViewTxt = item.ViewTxt;
+                        old.UserName = item.UserName;
+                        old.CurrEditTxt = item.CurrEditTxt;
+                        old.LatestTime=DateTime.Now;
                     }
                     db.SaveChanges();
                     return true;

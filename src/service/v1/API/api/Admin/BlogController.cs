@@ -80,7 +80,7 @@ namespace API.api.Admin
         }
 
         [HttpGet]
-        public IActionResult Blog([FromQuery]query_blog blog)
+        public IActionResult Blog([FromQuery] query_blog blog)
         {
             _result.Instance();
             _result.Fail(500, "");
@@ -90,7 +90,7 @@ namespace API.api.Admin
             if (data.Count() > 0)
             {
                 var data_res = _mapper.Map<List<query_blog>>(data);
-                _result.Success((JObject) JToken.FromObject(data_res));
+                _result.Success(JArray.FromObject(data_res));
             }
             else
                 _result.Fail(500, "删除失败");
