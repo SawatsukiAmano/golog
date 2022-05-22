@@ -1,5 +1,6 @@
 ﻿using DBUtility;
 using IDAL;
+using IDAL.Base;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,16 @@ namespace DAL
             }
         }
 
+        public Blog FindOne(Expression<Func<Blog, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Blog GetOneById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool UpdateBlog(List<Blog> editBlog)
         {
             using (var db = new EFMySqlContent())
@@ -73,6 +84,11 @@ namespace DAL
                 var user = db.Blog.Where(expression).ToList();
                 return user;
             }
+        }
+
+        Blog IBaseDAL<Blog>.Where(Expression<Func<Blog, bool>> expression)
+        {
+            throw new NotImplementedException();
         }
     }
 }

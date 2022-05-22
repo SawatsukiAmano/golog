@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IDAL
 {
-    public interface IDALBlog
+    public interface IDALBlog : Base.IBaseDAL<Blog>
     {
         /// <summary>
         /// 新增一个blog

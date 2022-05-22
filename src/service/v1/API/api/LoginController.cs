@@ -19,7 +19,7 @@ namespace API.api
         [HttpGet]
         public string GetTest()
         {
-            return "连接成功" + DateTime.Now;
+            return "连接成功" + DateTime.Now+"nya";
         }
 
 
