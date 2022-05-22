@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IBLL
 {
-    public interface IBLLBlog
+    public interface IBLLBlog: Base.IBaseBLL<Blog>
     {
   
     }

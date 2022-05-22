@@ -17,6 +17,6 @@ namespace BLL
         {
             this._dALBlog = blogDAL;
         }
-      
+
     }
 }

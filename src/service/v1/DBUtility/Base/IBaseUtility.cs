@@ -5,16 +5,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IBLL.Base
+namespace DBUtility.Base
 {
-    public interface IBaseBLL<T> where T : class
+    public interface IBaseUtility<T> where T : class
     {
         /// <summary>
         /// 根据id获取一个实体
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-       Task<T> GetOneById(object id);
+        T GetOneById(object id);
         /// <summary>
         /// 表达书获取一个实体
         /// </summary>
