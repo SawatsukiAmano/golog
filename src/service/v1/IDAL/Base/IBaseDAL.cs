@@ -28,5 +28,7 @@ namespace IDAL.Base
         /// <returns></returns>
         T Where(Expression<Func<T, bool>> expression);
 
+        bool AddOne(T model);
+
     }
 }

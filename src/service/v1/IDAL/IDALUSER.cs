@@ -8,11 +8,8 @@ using Model;
 
 namespace IDAL
 {
-    public interface IDALUser
+    public interface IDALUser : Base.IBaseDAL<User>
     {
 
-        int Login(string acc, string pwd);
-
-        User Find(Expression<Func<User, bool>> expression);
     }
 }

@@ -27,7 +27,6 @@ namespace API.api
         public result GetAcc(string acc)
         {
             result res = new result();
-            User user = _iBLLUser.Find(x => x.UserId == 1 && x.UserName == acc);
             //res.information = user;
             return res;
         }

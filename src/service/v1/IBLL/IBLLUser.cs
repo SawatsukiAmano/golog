@@ -10,8 +10,6 @@ namespace IBLL
 {
     public interface IBLLUser
     {
-        bool Logion(string acc, string pwd);
 
-        User Find(Expression<Func<User, bool>> expression);
     }
 }
