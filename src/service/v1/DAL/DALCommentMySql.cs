@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
-{
-    public class DALCommentMySql : DBUtility.EFMySqlContent<Comment>, IDALComment
+{  
+    public class DALCommentMySql : Base.DALBaseMysql<Comment>, IDALComment
     {
 
     }

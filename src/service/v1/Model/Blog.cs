@@ -44,5 +44,12 @@ namespace Model
         ///显示的文本
         /// </summary>
         public string ViewTxt { get; set; }
+        /// <summary>
+        /// 可见范围
+        /// -1:所有人
+        /// 1:仅自己
+        /// 2:指定用户
+        /// </summary>
+        public int ViewPower { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using IBLL;
+using IDAL.Base;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,13 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BLLLabelMySql : IBLLLabel
+    public class BLLLabelMySql : Base.BaseBLL<Model.Label>, IBLLLabel
     {
+        private readonly IBaseDAL<Label> _dALLabel;
+        public BLLLabelMySql(IBaseDAL<Label> dal)
+        {
+            this._dALLabel = dal;
+            base._baseDal = dal;
+        }
     }
 }

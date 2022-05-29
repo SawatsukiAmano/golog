@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DALLabelMysql : DBUtility.EFMySqlContent<Label>, IDALLabel
+    public class DALLabelMysql : Base.DALBaseMysql<Label>, IDALLabel
     {
     }
 }

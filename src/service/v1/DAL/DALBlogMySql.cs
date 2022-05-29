@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DALBlogMySql : EFMySqlContent<Blog>,IDALBlog
+    public class DALBlogMySql : Base.DALBaseMysql<Blog>, IDALBlog
     {
 
     }

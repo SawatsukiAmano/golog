@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace IBLL
 {
-    public interface IBLLUser
+    public interface IBLLUser : Base.IBaseBLL<User>
     {
 
     }

@@ -1,5 +1,6 @@
 ﻿using IBLL;
 using IDAL;
+using IDAL.Base;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -10,27 +11,18 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BLLUserMySql : IBLLUser
+    public class BLLUserMySql : Base.BaseBLL<Model.User>, IBLLUser
     {
 
-        private readonly IDALUser _dalUser;
+        private readonly IBaseDAL<User> _dalUser;
 
-        public BLLUserMySql(IDALUser userDAL)
+
+        public BLLUserMySql(IDALUser dal)
         {
-            this._dalUser = userDAL;
+            this._dalUser = dal;
+            base._baseDal= dal;
 
         }
-
-        public User Find(Expression<Func<User, bool>> expression)
-        {
-            return _dalUser.Find(expression);
-        }
-
-        public bool Logion(string acc, string pwd)
-        {
-            bool result = false;
-
-            return false;
-        }
+   
     }
 }

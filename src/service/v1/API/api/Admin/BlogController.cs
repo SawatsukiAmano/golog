@@ -36,8 +36,7 @@ namespace API.api.Admin
         {
             _result.Instance();
             var data = _mapper.Map<Blog>(blog);
-            //bool res = await _bLLBlog.AddOneBlog(data);
-            bool res = true;
+            bool res = await _bLLBlog.AddSync(data);
             if (res)
                 _result.Success();
             else
@@ -46,20 +45,20 @@ namespace API.api.Admin
         }
 
         /// <summary>
-        /// 删除一条blog
+        /// 删除blog
         /// </summary>
         /// <param name="id">blog id</param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task<IActionResult> Blog([FromBody] int id)
+        public async Task<IActionResult> Blog([FromBody] string idsStr)
         {
             _result.Instance();
-            //bool res = await _bLLBlog.DeleteBlog(x => x.BlogId == id);
-            bool res = false;
+            var idsArr = Array.ConvertAll(idsStr.Split(","), int.Parse);
+            bool res = await _bLLBlog.DeleteSync(x => idsArr.Any(y => y == x.BlogId));
             if (res)
                 _result.Success();
             else
-                _result.Fail(500, "删除失败");
+                _result.Fail(500, "删除失败,该文章已不存在");
             return Content(JsonConvert.SerializeObject(_result));
         }
 
@@ -69,35 +68,32 @@ namespace API.api.Admin
         /// <param name="blogs"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<IActionResult> Blog([FromBody] List<edit_blog> blogs)
+        public async Task<IActionResult> Blog([FromBody] edit_blog blogs)
+
         {
             _result.Instance();
-            var data = _mapper.Map<List<Blog>>(blogs);
-            bool res = false;
-            //bool res = await _bLLBlog.UpdateBlog(data);
+            var data = _mapper.Map<Blog>(blogs);
+            bool res = await _bLLBlog.UpdateSync(data);
             if (res)
                 _result.Success();
             else
-                _result.Fail(500, "删除失败");
+                _result.Fail(500, "修改失败");
             return Content(JsonConvert.SerializeObject(_result));
         }
 
         [HttpGet]
-        public IActionResult Blog([FromQuery] query_blog blog)
+        public async Task<IActionResult> Blog([FromQuery] int id)
         {
             _result.Instance();
             _result.Fail(500, "");
-            var map = _mapper.Map<Blog>(blog);
-
-            ////var data = _bLLBlog.Where(x => x.BlogId == map.BlogId);
-            //var data = false;
-            //if (data.Count() > 0)
-            //{
-            //    var data_res = _mapper.Map<List<query_blog>>(data);
-            //    _result.Success(JArray.FromObject(data_res));
-            //}
-            //else
-            //    _result.Fail(500, "删除失败");
+            var data = await _bLLBlog.FirstOrDefaultSync(x => id == x.BlogId);
+            if (data != null)
+            {
+                var data_res = _mapper.Map<List<query_blog>>(data);
+                _result.Success(JArray.FromObject(data_res));
+            }
+            else
+                _result.Fail(500, "查询失败，文章不存在");
             return Content(JsonConvert.SerializeObject(_result));
         }
     }

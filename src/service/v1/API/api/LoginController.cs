@@ -3,6 +3,7 @@ using ModelRes;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using IBLL;
+using Newtonsoft.Json.Linq;
 
 namespace API.api
 {
@@ -11,24 +12,27 @@ namespace API.api
     public class LoginController : ControllerBase
     {
         private readonly IBLLUser _iBLLUser;
+        private result _result;
         public LoginController(IBLLUser bLLUser)
         {
             _iBLLUser = bLLUser;
+            _result = CommonHelper.StaticHelper.api_result;
         }
 
         [HttpGet]
         public string GetTest()
         {
-            return "连接成功" + DateTime.Now+"nya";
+            return "连接成功" + DateTime.Now + "nya";
         }
 
 
         [HttpGet]
-        public result GetAcc(string acc)
+        public async Task<result> GetAcc(string acc)
         {
-            result res = new result();
-            //res.information = user;
-            return res;
+            _result.Instance();
+            var user = await _iBLLUser.FirstOrDefaultSync(x => x.UserName == acc);
+            _result.Success(JObject.FromObject(user));
+            return _result;
         }
 
     }

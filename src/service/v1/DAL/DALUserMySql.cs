@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 
 namespace DAL
 {
-    public class DALUserMySql : DBUtility.EFMySqlContent<User>, IDALUser
+    public class DALUserMySql : Base.DALBaseMysql<User>, IDALUser
     {
       
     }

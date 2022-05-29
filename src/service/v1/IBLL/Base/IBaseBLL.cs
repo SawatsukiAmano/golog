@@ -9,26 +9,55 @@ namespace IBLL.Base
 {
     public interface IBaseBLL<T> where T : class
     {
+
+        #region DQL
         /// <summary>
-        /// 根据id获取一个实体
+        /// 键值对
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-       Task<T> GetOneById(object id);
+        ValueTask<T> FindAsync(object id);
         /// <summary>
-        /// 表达书获取一个实体
+        /// 查询单个实体
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
-        T FindOne(Expression<Func<T, bool>> expression);
+        Task<T> FirstOrDefaultSync(Expression<Func<T, bool>> expression);
         /// <summary>
-        /// 获取实体集合
+        /// 查询集合
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
-        T Where(Expression<Func<T, bool>> expression);
+        Task<IList<T>> WhereSync(Expression<Func<T, bool>> expression);
+        #endregion
 
-        bool AddOne(T model);
+        #region DML
+        /// <summary>
+        /// 新增一个实体
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        Task<bool> AddSync(T entity);
+        /// <summary>
+        /// 新增实体集合
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <returns></returns>
+        Task<bool> AddRangeSync(IList<T> entities);
+        /// <summary>
+        /// 删除实体集合
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        Task<bool> DeleteSync(Expression<Func<T, bool>> expression);
+        /// <summary>
+        /// 更新一个实体
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newEntity"></param>
+        /// <returns></returns>
+        Task<bool> UpdateSync(T newEntity);
+        #endregion
 
     }
 }
