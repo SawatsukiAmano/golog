@@ -28,7 +28,6 @@ builder.Services.AddScoped<IDALBlog, DALBlogMySql>();
 builder.Services.AddScoped<IDALLabel, DALLabelMysql>();
 builder.Services.AddScoped<IDALComment, DALCommentMySql>();
 
-
 builder.Services.AddScoped<IBLLUser, BLLUserMySql>();
 builder.Services.AddScoped<IBLLBlog, BLLBlogMySql>();
 builder.Services.AddScoped<IBLLLabel, BLLLabelMySql>();
