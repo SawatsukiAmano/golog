@@ -2,7 +2,7 @@
 一个跨平台的Blog项目
 # V1
 ##  开发环境
-> 基于 MySQL 8.0——.NET6( EF Core+ C#10 + IOC + WebAPI + JWT +Log4Net)——VUE3( Axios + TypeScript)
+> 基于 MySQL 8.0——.NET6( EF Core+ C#10 + IOC + WebAPI + JWT + Log4Net + VS2022)——VUE3( Axios + TypeScript + VS Code)
 
 ## 部署环境
 ### 系统部署
