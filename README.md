@@ -3,6 +3,7 @@
 # V1
 ##  开发环境
 > 基于 MySQL 8.0——.NET6( EF Core+ C#10 + IOC(三层) + WebAPI + JWT + Log4Net + VS2022)——VUE3( Axios + TypeScript + VS Code)
+> 安卓端基于Java,IOS基于Swift
 
 ## 部署环境
 ### 系统部署
