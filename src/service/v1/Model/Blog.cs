@@ -15,6 +15,7 @@ namespace Model
         /// <summary>
         /// 文章id
         /// </summary>
+        [Key]
         public int BlogId { get; set; }
         /// <summary>
         /// 用户名

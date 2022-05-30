@@ -16,7 +16,6 @@ namespace BLL
 
         private readonly IBaseDAL<User> _dalUser;
 
-
         public BLLUserMySql(IDALUser dal)
         {
             this._dalUser = dal;

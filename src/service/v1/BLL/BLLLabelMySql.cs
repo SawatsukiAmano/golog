@@ -1,4 +1,5 @@
 ﻿using IBLL;
+using IDAL;
 using IDAL.Base;
 using Model;
 using System;
@@ -12,7 +13,7 @@ namespace BLL
     public class BLLLabelMySql : Base.BaseBLL<Model.Label>, IBLLLabel
     {
         private readonly IBaseDAL<Label> _dALLabel;
-        public BLLLabelMySql(IBaseDAL<Label> dal)
+        public BLLLabelMySql(IDALLabel dal)
         {
             this._dALLabel = dal;
             base._baseDal = dal;

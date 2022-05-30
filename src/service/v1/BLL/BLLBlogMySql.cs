@@ -15,7 +15,7 @@ namespace BLL
     public class BLLBlogMySql : BaseBLL<Blog>, IBLLBlog
     {
         private readonly IBaseDAL<Blog> _dALBlog;
-        public BLLBlogMySql(IBaseDAL<Blog> dal)
+        public BLLBlogMySql(IDALBlog dal)
         {
             this._dALBlog = dal;
             base._baseDal= dal;
