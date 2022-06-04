@@ -6,7 +6,7 @@
 > 安卓基于kotlin
 > IOS基于Swift
 
-## 部署环境
+## 部署环境l
 ### 系统部署
 1. MySQL——CnetOS 8.2
 2. API——CentOS 8.2 .NET 6 RunTime Kestrel自托管
