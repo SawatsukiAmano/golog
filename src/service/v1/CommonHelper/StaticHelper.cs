@@ -10,8 +10,5 @@ namespace CommonHelper
     public class StaticHelper
     {
       
-            public static Stack<string> StaticClasses = new Stack<string>();
-
-            public static result api_result = new result();
     }
 }

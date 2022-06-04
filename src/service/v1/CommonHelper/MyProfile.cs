@@ -13,6 +13,10 @@ namespace CommonHelper
     {
         public MyProfile()
         {
+            #region User
+       
+            #endregion
+
             #region Blog
             //CreateMap<add_blog, Blog>()
             //    .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.user_name))

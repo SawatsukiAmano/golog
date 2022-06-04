@@ -1,0 +1,11 @@
+﻿global using CommonHelper;
+global using System.Text;
+global using AutoMapper;
+global using IBLL.MySql;
+global using IDAL.MySql;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Mvc;
+global using Model;
+global using ModelRes;
+global using Newtonsoft.Json;
+global using Newtonsoft.Json.Linq;

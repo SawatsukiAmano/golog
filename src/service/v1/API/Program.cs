@@ -1,14 +1,7 @@
-using BLL;
-using IBLL;
-using IDAL;
-using DAL;
-using Microsoft.EntityFrameworkCore;
-using Autofac;
-using System.Net;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Model;
-using ModelRes;
-using CommonHelper;
+using DAL.MySql;
+using BLL.MySql;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,26 +12,47 @@ builder.Services.AddSwaggerGen();
 
 
 #region ·þÎñ×¢²á
-//AutoMapper
-builder.Services.AddAutoMapper(typeof(MyProfile));
-builder.Services.AddControllers().AddNewtonsoftJson();
-// IBLL¡ª¡ªBLL IDAL¡ª¡ªDAL Ó³Éä
-builder.Services.AddScoped<IDALUser, DALUserMySql>();
-builder.Services.AddScoped<IDALBlog, DALBlogMySql>();
-builder.Services.AddScoped<IDALLabel, DALLabelMysql>();
-builder.Services.AddScoped<IDALComment, DALCommentMySql>();
+{ //AutoMapper
+    builder.Services.AddAutoMapper(typeof(MyProfile));
+    builder.Services.AddControllers().AddNewtonsoftJson();
+}
 
-builder.Services.AddScoped<IBLLUser, BLLUserMySql>();
-builder.Services.AddScoped<IBLLBlog, BLLBlogMySql>();
-builder.Services.AddScoped<IBLLLabel, BLLLabelMySql>();
-builder.Services.AddScoped<IBLLComment, BLLCommentMySql>();
+{ //IBLL¡ª¡ªBLL IDAL¡ª¡ªDAL Ó³Éä
+    builder.Services.AddScoped<IDALUser, DALUserMySql>();
+    builder.Services.AddScoped<IDALBlog, DALBlogMySql>();
+    builder.Services.AddScoped<IDALLabel, DALLabelMysql>();
+    builder.Services.AddScoped<IDALComment, DALCommentMySql>();
 
+    builder.Services.AddScoped<IBLLUser, BLLUserMySql>();
+    builder.Services.AddScoped<IBLLBlog, BLLBlogMySql>();
+    builder.Services.AddScoped<IBLLLabel, BLLLabelMySql>();
+    builder.Services.AddScoped<IBLLComment, BLLCommentMySql>();
+}
 
+{ //JWT¼øÈ¨
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+           options =>
+           {
+               options.TokenValidationParameters = new TokenValidationParameters()
+               {
+                   ValidateIssuer = false,
+                   ValidateAudience = false,
+                   ValidateLifetime = true,
+                   //ValidAudience = null,
+                   //ValidIssuer=null,
+                   ValidateIssuerSigningKey = true,
+                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("")),
+               };
+           }
+           );
+}
 
 //builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 //autofac
 //var autoBuilder = new ContainerBuilder();
 //autoBuilder.Register<>
+
+
 #endregion
 
 

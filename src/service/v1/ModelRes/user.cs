@@ -38,4 +38,10 @@ namespace ModelRes
         /// </summary>
         public string qq_id { get; set; }
     }
+
+    public class login_user
+    {
+        public string user_id { get; set; }
+        public string pwd { get; set; }
+    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBUtility
 {
-    internal class EFSqlServerContent
+    internal class EFSqlServerContext
     {
     }
 }

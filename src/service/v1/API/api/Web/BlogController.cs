@@ -20,9 +20,9 @@ namespace API.api.Web
         private readonly IMapper _mapper;
         public WebBlogController(IBLLBlog bLLBlog, IMapper mapper)
         {
-            _result = StaticHelper.api_result;
             _bLLBlog = bLLBlog;
             _mapper = mapper;
+            _result = new result();
         }
         [HttpGet]
         public IActionResult Blog([FromQuery] query_blog blog)

@@ -1,27 +1,15 @@
-﻿using AutoMapper;
-using CommonHelper;
-using IBLL;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Model;
-using ModelRes;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace API.api.Admin
+﻿namespace API.api.Admin
 {
     [Route("api/[controller]/[action]")]
+    [Authorize(Roles = "Logined")]
     [ApiController]
     public class BlogController : ControllerBase
     {
-        private result _result;
-
         private readonly IBLLBlog _bLLBlog;
         private readonly IMapper _mapper;
 
         public BlogController(IBLLBlog bLLBlog, IMapper mapper)
         {
-            _result = StaticHelper.api_result;
             _bLLBlog = bLLBlog;
             _mapper = mapper;
         }
@@ -34,14 +22,14 @@ namespace API.api.Admin
         [HttpPost]
         public async Task<IActionResult> Blog([FromBody] add_blog blog)
         {
-            _result.Instance();
-            var data = _mapper.Map<Blog>(blog);
-            bool res = await _bLLBlog.AddSync(data);
-            if (res)
-                _result.Success();
-            else
-                _result.Fail(500, "新增失败");
-            return Content(JsonConvert.SerializeObject(_result));
+            //_result.Instance();
+            //var data = _mapper.Map<Blog>(blog);
+            //bool res = await _bLLBlog.AddSync(data);
+            //if (res)
+            //    _result.Success();
+            //else
+            //    _result.Fail(500, "新增失败");
+            return Content(JsonConvert.SerializeObject(""));
         }
 
         /// <summary>
@@ -52,14 +40,14 @@ namespace API.api.Admin
         [HttpDelete]
         public async Task<IActionResult> Blog([FromBody] string idsStr)
         {
-            _result.Instance();
-            var idsArr = Array.ConvertAll(idsStr.Split(","), int.Parse);
-            bool res = await _bLLBlog.DeleteSync(x => idsArr.Any(y => y == x.BlogId));
-            if (res)
-                _result.Success();
-            else
-                _result.Fail(500, "删除失败,该文章已不存在");
-            return Content(JsonConvert.SerializeObject(_result));
+            //_result.Instance();
+            //var idsArr = Array.ConvertAll(idsStr.Split(","), int.Parse);
+            //bool res = await _bLLBlog.DeleteSync(x => idsArr.Any(y => y == x.BlogId));
+            //if (res)
+            //    _result.Success();
+            //else
+            //    _result.Fail(500, "删除失败,该文章已不存在");
+            return Content(JsonConvert.SerializeObject(""));
         }
 
         /// <summary>
@@ -71,30 +59,31 @@ namespace API.api.Admin
         public async Task<IActionResult> Blog([FromBody] edit_blog blogs)
 
         {
-            _result.Instance();
-            var data = _mapper.Map<Blog>(blogs);
-            bool res = await _bLLBlog.UpdateSync(data);
-            if (res)
-                _result.Success();
-            else
-                _result.Fail(500, "修改失败");
-            return Content(JsonConvert.SerializeObject(_result));
+            //_result.Instance();
+            //var data = _mapper.Map<Blog>(blogs);
+            //bool res = await _bLLBlog.UpdateSync(data);
+            //if (res)
+            //    _result.Success();
+            //else
+            //    _result.Fail(500, "修改失败");
+            return Content(JsonConvert.SerializeObject(""));
         }
 
         [HttpGet]
         public async Task<IActionResult> Blog([FromQuery] int id)
         {
-            _result.Instance();
-            _result.Fail(500, "");
-            var data = await _bLLBlog.FirstOrDefaultSync(x => id == x.BlogId);
-            if (data != null)
-            {
-                var data_res = _mapper.Map<List<query_blog>>(data);
-                _result.Success(JArray.FromObject(data_res));
-            }
-            else
-                _result.Fail(500, "查询失败，文章不存在");
-            return Content(JsonConvert.SerializeObject(_result));
+            //_result.Instance();
+            //_result.Fail(500, "");
+            //var data = await _bLLBlog.FirstOrDefaultSync(x => id == x.BlogId);
+            //if (data != null)
+            //{
+            //    var data_res = _mapper.Map<List<query_blog>>(data);
+            //    _result.Success(JArray.FromObject(data_res));
+            //}
+            //else
+            //    _result.Fail(500, "查询失败，文章不存在");
+            //return Content(JsonConvert.SerializeObject(_result));
+            return Content(JsonConvert.SerializeObject(""));
         }
     }
 }
