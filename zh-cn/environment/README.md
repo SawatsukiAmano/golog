@@ -121,6 +121,13 @@ docker start mysql
 ```
 
 ## RabbitMQ
+<details>
+<summary>自我评价（点击展开）</summary>
+
+- Abc
+- Abc
+
+</details>
 ```bash
 
 ```

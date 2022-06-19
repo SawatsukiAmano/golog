@@ -14,5 +14,8 @@
   * [Markdown 配置](zh-cn/markdown.md)
   * [代码高亮](zh-cn/language-highlight.md)
 
-* [:us:, :uk:](/)
-* [:cn:](/zh-cn/)
+
+* 国际化
+  * [:cn: 中文](/zh-cn/)
+  * [:us: English](/en/)
+  * [:jp: 日本語](/jp/)
