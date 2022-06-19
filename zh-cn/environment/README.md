@@ -9,7 +9,7 @@
 > 部署环境基于CentOS8和Docker20
 ## Linux
 > [CentOS 8](https://mirrors.aliyun.com/centos/8/isos/x86_64/)  
-> 测试环境为本地和国内未备案轻量云，均为CentOS 8.2/8.5
+> 测试环境为本地和国内未备案轻量云，均为CentOS 8.2/8.5  
 > 以下配置为本地x86_64服务器装机后的配置，其中Docker安装路径在一个NTFS格式的U盘中
 ### YUM源
 ```bash
@@ -19,7 +19,6 @@ mkdir repo_bak
 mv *.repo repo_bak/
 vim CentOS-Base.repo
 ```
-
 ```repo
 [base]
 name=CentOS-8-stream - Base - mirrors.aliyun.com
@@ -67,10 +66,9 @@ yum install -y ntfs-3g
 yum install -y ntfsprogs
 fdisk -l
 ntfsfix /dev/sdb1
-mkdir -p /mnt/device01/
-
+mkdir -p /mnt/device01/ # 创建挂载点
 mount -t ntfs-3g /dev/sdb1 /mnt/device01
-mkdir -p /mnt/device01/docker/
+mkdir -p /mnt/device01/docker/ # 在挂载点下创建docker安装目录
 ```
 
 ## Docker
@@ -86,7 +84,6 @@ yum remove docker*  # 移除所有docker相关的包
 # 设置Docker安装路径
 mkdir -p /etc/docker/
 vim /etc/docker/daemon.json
-#配置文件内容：graph代表docker指定的安装目录
 # {
 # "registry-mirrors": ["http://hub-mirror.c.163.com"], # 镜像源
 # "graph":"/mnt/device01/docker" # 安装路径
@@ -94,7 +91,7 @@ vim /etc/docker/daemon.json
 
 yum-config-manager --add-repo  http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 yum-config-manager --add-repo http://download.docker.com/linux/centos/docker-ce.repo    # Docker官网仓库
-yum install docker-ce docker-ce-cli containerd.io --allowerasing # CentOS8默认使用podman代替docker。直接安装docker会出现错误
+yum install docker-ce docker-ce-cli containerd.io --allowerasing # CentOS8默认使用podman代替docker，直接安装docker会出现错误
 
 systemctl start docker  # 启动Docker
 systemctl enable docker # 开机自启
@@ -127,3 +124,11 @@ docker start mysql
 ```bash
 
 ```
+
+## Redis
+
+## MongoDB
+
+## MariaDB
+
+## MsSql
