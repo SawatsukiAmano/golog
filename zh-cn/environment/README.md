@@ -101,5 +101,29 @@ systemctl enable docker # 开机自启
 docker version
 mkdir -p /mnt/device01/docker-data
 cd /mnt/device01/docker-data
-mkdir mysql redis mongo_db rabbit_mq maria_db mssql
+mkdir mysql redis mongo_db rabbit_mq maria_db mssql # 创建docker持久化数据文件夹
+```
+
+# Application
+## MySql
+```bash
+docker search mysql
+docker pull mysql
+
+# 防火墙
+firewall-cmd --zone=public --list-ports 
+firewall-cmd --query-port=3306/tcp # 查询端口是否开放
+firewall-cmd --zone=public --add-port=3306/tcp --permanent # 开启防火墙3306端口
+firewall-cmd --zone=public --remove-port=3306/tcp --permanent
+firewall-cmd --reload
+systemctl status firewalld
+
+# 启动mysql
+docker run -it -d --name mysql -v /mnt/device01/docker-data/mysql/:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456ABC --privileged=true --restart=always -p 3306:3306 mysql
+docker start mysql
+```
+
+## RabbitMQ
+```bash
+
 ```
