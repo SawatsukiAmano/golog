@@ -2,19 +2,22 @@ using DAL.MySql;
 using BLL.MySql;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 #region ·þÎñ×¢²á
+{//¶ÁÈ¡appsettingsÅäÖÃ
+    builder.Services.AddSingleton(new Appsettings(builder.Configuration));
+}
+
 { //AutoMapper
     builder.Services.AddAutoMapper(typeof(MyProfile));
-    builder.Services.AddControllers().AddNewtonsoftJson();
 }
 
 { //IBLL¡ª¡ªBLL IDAL¡ª¡ªDAL Ó³Éä
@@ -57,7 +60,6 @@ builder.Services.AddSwaggerGen();
 
 
 
-
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -67,7 +69,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
 app.MapControllers();
+//app.MapGet();
+
 app.UseHttpLogging();
 app.Run();

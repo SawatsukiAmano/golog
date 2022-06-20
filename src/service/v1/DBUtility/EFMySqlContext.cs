@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommonHelper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Model;
 using System;
@@ -22,7 +23,8 @@ namespace DBUtility
         //public string ConnectionString { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=42.193.14.174;user id=root;password=Admin@123;database=golog;Character Set=utf8", new MySqlServerVersion(new Version(8, 0, 26)));
+            string str = Appsettings.GetValue("ConnectionStrings:LocalConnection");
+            optionsBuilder.UseMySql(str, new MySqlServerVersion(new Version(8, 0, 24)));
         }
 
         //创建时配置

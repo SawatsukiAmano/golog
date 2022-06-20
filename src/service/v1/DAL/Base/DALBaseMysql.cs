@@ -8,7 +8,6 @@
             _context = new EFMySqlContent();
         }
 
-
         #region DQL
         public async Task<T> FirstOrDefaultSync(Expression<Func<T, bool>> expression) => await Task.Run(() => { return _context.Set<T>().FirstOrDefault(expression); });
         public async Task<IList<T>> WhereSync(Expression<Func<T, bool>> expression) => await Task.Run(() => { return _context.Set<T>().Where(expression).ToList(); });

@@ -26,6 +26,7 @@ namespace API.api
         [HttpGet]
         public string GetTest()
         {
+            var res = Appsettings.Get<Dictionary<string, string>>("ConnectionStrings");
             return "连接成功" + DateTime.Now + "nya";
         }
 
@@ -69,16 +70,16 @@ namespace API.api
             return strToken;
         }
 
-        [HttpGet]
-        public async Task<result> TestBlog()
-        {
-            _result.Instance();
-            var user = await _iBLLBlog.FirstOrDefaultSync(x => x.BlogId != null);
-            if (user == null)
-                _result.Fail();
-            else
-                _result.Success(JObject.FromObject(user));
-            return _result;
-        }
+        //[HttpGet]
+        //public async Task<result> TestBlog()
+        //{
+        //    _result.Instance();
+        //    var user = await _iBLLBlog.FirstOrDefaultSync(x => x.BlogId != null);
+        //    if (user == null)
+        //        _result.Fail();
+        //    else
+        //        _result.Success(JObject.FromObject(user));
+        //    return _result;
+        //}
     }
 }

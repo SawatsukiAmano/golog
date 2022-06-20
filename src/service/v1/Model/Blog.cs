@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace Model
     /// <summary>
     /// 文章表
     /// </summary>
+    [Table("blog")]
     public class Blog
     {
         /// <summary>
@@ -52,5 +54,9 @@ namespace Model
         /// 2:指定用户
         /// </summary>
         public int ViewPower { get; set; }
+        /// <summary>
+        /// 创建文章时的IP
+        /// </summary>
+        public string IPAddr { get; set; }
     }
 }

@@ -50,7 +50,7 @@ namespace ModelRes
         public string? category { get; set; }
         public DateTime? create_time { get; set; }
 
-        public DateTime? lagtest_time { get; set; }
+        public DateTime? latest_time { get; set; }
 
         public string? curr_edit_txt { get; set; }
 
