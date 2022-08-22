@@ -9,3 +9,4 @@ global using Model;
 global using ModelRes;
 global using Newtonsoft.Json;
 global using Newtonsoft.Json.Linq;
+global using API.Base;

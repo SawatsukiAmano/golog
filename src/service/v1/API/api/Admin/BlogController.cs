@@ -1,9 +1,9 @@
-﻿namespace API.api.Admin
+﻿
+
+namespace API.api.Admin
 {
-    [Route("[action]")]
     //[Authorize(Roles = "Logined")]
-    [ApiController]
-    public class BlogController : ControllerBase
+    public class BlogController : CoreController
     {
         private readonly IBLLBlog _bLLBlog;
         private readonly IMapper _mapper;

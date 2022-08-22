@@ -48,15 +48,19 @@ namespace API.api
 
         private string GenerateJwtToken(User userInfo)
         {
-            string algorithm = SecurityAlgorithms.HmacSha256;
-            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("")); //私钥
-            SigningCredentials signing = new SigningCredentials(key, algorithm);
+
+            // 1. 设置加密算法,生成签名证书,钥长度至少为16位
+            string encrypt = SecurityAlgorithms.HmacSha256;
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Appsettings.Configuration["JWT:ScrectKey"])); //私钥
+            SigningCredentials signing = new SigningCredentials(key, encrypt);
 
 
+            // 3. 构造Claims
             Claim[] claims = new[]
              {
-            new Claim(ClaimTypes.NameIdentifier,userInfo.UserId.ToString()),
-            new Claim(ClaimTypes.Name, userInfo.UserName),
+            new Claim(JwtRegisteredClaimNames.NameId,userInfo.UserName),
+            new Claim(JwtRegisteredClaimNames.Name, userInfo.NickName),
+            new Claim(ClaimTypes.Role, userInfo.NickName),
             //new Claim(JwtRegisteredClaimNames.Sub, "client_brower"), //jwt所面向的用户
             };
 
@@ -81,5 +85,7 @@ namespace API.api
         //        _result.Success(JObject.FromObject(user));
         //    return _result;
         //}
+
+
     }
 }
