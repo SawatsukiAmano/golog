@@ -8,7 +8,6 @@
         #region DQL
 
         public async ValueTask<T> FindAsync(object id) => await _baseDal.FindAsync(id);
-
         public async Task<T> FirstOrDefaultSync(Expression<Func<T, bool>> expression) => await _baseDal.FirstOrDefaultSync(expression);
         public async Task<IList<T>> WhereSync(Expression<Func<T, bool>> expression) => await _baseDal.WhereSync(expression);
 
