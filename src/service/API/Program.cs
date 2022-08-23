@@ -50,11 +50,12 @@ builder.Services.AddSwaggerGen();
            );
 }
 
+//获取请求信息
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 //autofac
 //var autoBuilder = new ContainerBuilder();
 //autoBuilder.Register<>
-
 
 #endregion
 
@@ -68,9 +69,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//鉴权
 app.UseAuthorization();
+app.UseHttpLogging();//start the http logs
 app.MapControllers();
-//app.MapGet();
 
-app.UseHttpLogging();
+
+
 app.Run();
