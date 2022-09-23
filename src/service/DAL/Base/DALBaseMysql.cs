@@ -8,9 +8,11 @@
             _context = new EFMySqlContent();
         }
 
-        #region DQL
+        #region DQL Sync
         public async Task<T> FirstOrDefaultSync(Expression<Func<T, bool>> expression) => await Task.Run(() => { return _context.Set<T>().FirstOrDefault(expression); });
         public async Task<IList<T>> WhereSync(Expression<Func<T, bool>> expression) => await Task.Run(() => { return _context.Set<T>().Where(expression).ToList(); });
+        public async Task<IList<T>> WhereSync(Expression<Func<T, bool>> expressionFunc, Expression<Func<T, bool>> expressionSort) => await Task.Run(() => { return _context.Set<T>().Where(expressionFunc).OrderBy(expressionSort).ToList(); });
+        public async Task<IList<M>> WhereSync<M>(Expression<Func<T, bool>> expressionFunc, Expression<Func<T, bool>> expressionSort, Expression<Func<T, M>> expressionSelect) => await Task.Run(() => { return _context.Set<T>().Where(expressionFunc).OrderBy(expressionSort).Select(expressionSelect).ToList(); });
         public ValueTask<T> FindAsync(object id) => _context.Set<T>().FindAsync(id);
         #endregion
 
